@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">  
+    <display-name></display-name>  
+      
+    <!-- 监听spring上下文容器 -->  
+	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+    <!-- 加载spring的xml配置文件到 spring的上下文容器中 -->  
+    <context-param>  
+        <param-name>contextConfigLocation</param-name>  
+        <param-value>classpath*:root-context.xml</param-value>
+    </context-param>  
+  <context-param>  
+        <param-name>log4jConfigLocation</param-name>  
+        <param-value>classpath:log4j.properties</param-value>  
+    </context-param>      
+    <!-- 配置Spring MVC DispatcherServlet -->  
+    <servlet>  
+        <servlet-name>dispatcher</servlet-name>  
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+        <!-- 初始化参数 -->  
+        <init-param>  
+            <!-- 加载SpringMVC的xml到 spring的上下文容器中 -->  
+            <param-name>contextConfigLocation</param-name>  
+            <param-value>  
+                /WEB-INF/classes/*-application.xml  
+            </param-value>  
+        </init-param> 
+        <load-on-startup>1</load-on-startup>  
+    </servlet>   
+      
+    <!-- 配置DispatcherServlet所需要拦截的 url -->  
+    <servlet-mapping>  
+        <servlet-name>dispatcher</servlet-name>  
+        <url-pattern>*.jhtml</url-pattern> 
+    </servlet-mapping>  
+	<filter>
+	    <filter-name>characterEncodingFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	    <init-param>
+	        <param-name>encoding</param-name>
+	        <param-value>UTF-8</param-value>
+	    </init-param>
+	    <init-param> 
+            <param-name>forceEncoding</param-name> 
+            <param-value>true</param-value> 
+        </init-param> 
+	</filter>
+	<filter-mapping>
+	    <filter-name>characterEncodingFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	  
+	<filter>
+	    <filter-name>imageFilter</filter-name>
+	    <filter-class>kingdee.k3.o2o.web.webapp.servlet.ImageFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>imageFilter</filter-name>
+	    <url-pattern>/upload/image/*</url-pattern>
+	</filter-mapping> 
+	
+    <welcome-file-list>  
+        <welcome-file>view.jhtml</welcome-file>  
+    </welcome-file-list> 
+    
+    
+    
+    <!-- 浏览器打开文件类型，@author xinhang_peng -->
+    <mime-mapping>  
+	    <extension>doc</extension>  
+	    <mime-type>application/vnd.ms-word</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>gif</extension>  
+	    <mime-type>image/gif</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>htm</extension>  
+	    <mime-type>text/html</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>html</extension>  
+	    <mime-type>text/html</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>jnlp</extension>  
+	    <mime-type>application/x-java-jnlp-file</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>jpeg</extension>  
+	    <mime-type>image/jpeg</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>jpg</extension>  
+	    <mime-type>image/jpeg</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>js</extension>  
+	    <mime-type>application/x-javascript</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>pdf</extension>  
+	    <mime-type>application/pdf</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>png</extension>  
+	    <mime-type>image/png</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>rar</extension>  
+	    <mime-type>application/x-rar-compressed</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>txt</extension>  
+	    <mime-type>text/plain</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>xls</extension>  
+	    <mime-type>application/vnd.ms-excel</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>xml</extension>  
+	    <mime-type>text/xml</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>xul</extension>  
+	    <mime-type>application/vnd.mozilla.xul-xml</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>zhtml</extension>  
+	    <mime-type>text/html</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>zip</extension>  
+	    <mime-type>application/x-zip</mime-type>  
+	</mime-mapping>  
+	<mime-mapping>  
+	    <extension>zul</extension>  
+	    <mime-type>text/html</mime-type>  
+	</mime-mapping>  
+    
+    
+  
+</web-app>  

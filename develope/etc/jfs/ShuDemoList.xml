@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pageview SYSTEM "http://xd.k3cloud.kingdee.com/dtd/JFS.dtd" >
+<pageview type="listView" name="舒华测试页面" plugin="com.shu.plugin.ShuDemoListPlugin"  extend="IListView" editview="ShuDemoEdit">
+	<datasource>
+		<querylist>
+                select fid,fnumber,fname from T_ESS_SHUDemo
+		</querylist>
+	</datasource>
+	<view>
+		<toolbar id="toolbar" target="datagrid">
+	    	<menubutton id="refresh" name="刷新" icon="refresh" iservice="refresh"/>
+			<menubutton id="addnew" name="新增" icon="add" iservice="add"/>
+			<menubutton id="delete" needSelect="true" name="删除" icon="delete" confirmtip="删除后记录不可恢复，确认删除?"/>
+		</toolbar>
+		<listdatagrid id="listentry">
+		    <filter id="filter">
+	            <searcher id="defaultsearch" placeholder="输入查询关键字" name="查询" width = "100"/>
+		    </filter>
+			<datagrid id="datagrid" showTree="true">
+				<fields>
+					<text id="id" name="编号"/>
+					<text id="Number" name="Number"/>
+					<text id="Name" name="Name"/>
+				</fields>
+			</datagrid>
+		</listdatagrid>
+	</view>
+</pageview>

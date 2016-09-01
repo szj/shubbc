@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*/**" />
+            <mvc:exclude-mapping path="/login/**"/>
+            <mvc:exclude-mapping path="/ftl"/>
+            <mvc:exclude-mapping path="/static"/>
+            <ref bean="loginCheckInterceptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/index.jhtml" />
+            <mvc:mapping path="/dynamicForm/**" />
+            <!--<mvc:exclude-mapping path="/admin/login.jhtml"/>-->
+            <ref bean="loginCheckAdminInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+ 
+    <bean id="loginCheckInterceptor"
+        class="kingdee.k3.o2o.base.webapp.interceptor.LoginCheckInterceptor">
+    </bean>
+    <bean id="loginCheckAdminInterceptor"
+        class="kingdee.k3.o2o.admin.webapp.Interceptor.LoginCheckAdminInterceptor">
+    </bean>
+</beans>

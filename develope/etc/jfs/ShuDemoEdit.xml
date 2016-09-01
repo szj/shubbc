@@ -1,0 +1,19 @@
+<pageview type="billView" name="舒华测试编辑页面" plugin="com.shu.plugin.ShuDemoEditPlugin" extend="IBillView" bo="ShuDemo">
+	<view>
+		<toolbar id="Toolbar" >
+	    	<menubutton id="btn_close" name="关闭" icon="delete" iservice="delete"/>
+			<menubutton id="save" name="保存" icon="save"  iservice="save"/>
+			<menubutton id="refresh" name="刷新" icon="refresh"  iservice="refresh"/>
+		</toolbar>
+		<tabgroup>
+			<tab  name="基本信息">	
+				<latticerowpanel>
+					<text id="FNUMBER" name="编号"   required="true" orm="Number"/>
+					<blank /><blank/>
+					<text id="FNAME" name="名称"   required="true" orm="Name"/> 
+					<blank /><blank/>
+				</latticerowpanel>
+			</tab>
+		</tabgroup>	
+	</view>	
+</pageview>

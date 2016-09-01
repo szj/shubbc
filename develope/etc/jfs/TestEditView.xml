@@ -1,0 +1,20 @@
+<pageview type="billView" name="测试渠道区域" plugin="plugin.TestEditPlugin" extend="IBillView" bo="ChannelArea">
+	<view>
+		<toolbar id="Toolbar" >
+			<menubutton id="save" name="保存" icon="save"  iservice="save"/>
+			<menubutton id="refresh" name="刷新" icon="refresh"  iservice="refresh"/>
+		</toolbar>
+		<tabgroup>
+			<tab  name="基本信息">	
+				<latticerowpanel>
+					<code id="FNUMBER" name="区域编码"   rule="CR-SYS-CHANNELAREA"  placeholder="区域编码由系统规则自动生成" required="true" orm="areaNumber"/>
+					<blank /><blank/>
+					<text id="FNAME" name="区域名称" placeholder="区域名称" required="true" orm="areaName"/> 
+					<blank /><blank/>
+					<selectdata id="FPARENTID" name="上级区域" cols="1" superselect="ChannelArea" editable="true" orm="parentId" linkorm="parentId.areaName"/>
+					<checkbox id="FENABLE" name="启用状态" orm="enable"/>
+				</latticerowpanel>
+			</tab>
+		</tabgroup>	
+	</view>	
+</pageview>

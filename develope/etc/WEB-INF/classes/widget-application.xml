@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+			<!-- 配置freeMarker的模板路径 -->
+		<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		    <property name="freemarkerSettings" ref="freemarkerConfiguration"/>
+		    <property name="templateLoaderPath">
+		        <value>/ftl/</value>
+		    </property>
+		    <property name="freemarkerVariables">
+		        <map>
+		            <entry key="xml_escape" value-ref="fmXmlEscape" />
+		            <entry key="widget" value-ref="widget" />
+		            <entry key="res" value-ref="res" />
+		            <entry key="format" value-ref="numberFormat" />
+		            <entry key="imageScale" value-ref="imageSizeFormat" />
+		        </map>
+		    </property>
+		    <!-- property name="freemarkerSettings"> 
+            <props>    
+                <prop key="template_update_delay">0</prop> 
+                <prop key="classic_compatible">true</prop>
+                <prop key="defaultEncoding">utf-8</prop>
+            </props>    
+        </property-->  
+		    
+		</bean>
+		
+		<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+		<bean id="widget" class="kingdee.k3.o2o.base.webapp.widget.WidgetController"/>
+		<bean id="res" class="kingdee.k3.o2o.base.webapp.taglib.Resource"/>
+		<bean id="numberFormat" class="kingdee.k3.o2o.base.webapp.function.NumberFormat"/>
+		<bean id="imageSizeFormat" class="kingdee.k3.o2o.base.webapp.function.ImageSizeFormat"/>
+</beans>
